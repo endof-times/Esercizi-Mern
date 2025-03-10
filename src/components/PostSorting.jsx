@@ -1,10 +1,21 @@
 import PropTypes from 'prop-types'
 
-export function PostSorting({ fields = [] }) {
+export function PostSorting({
+  fields = [],
+  value,
+  onChange,
+  orderValue,
+  onOrderChange,
+}) {
   return (
     <div>
       <label htmlFor='sortBy'>Sort By:</label>
-      <select name='sortBy' id='sorBy'>
+      <select
+        name='sortBy'
+        id='sorBy'
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
         {fields.map((field) => (
           <option value={field} key={field}>
             {field}
@@ -13,7 +24,12 @@ export function PostSorting({ fields = [] }) {
       </select>
       {'/'}
       <label htmlFor='sortOrder'>Sort order: </label>
-      <select name='sortOrder' id='sortOrder'>
+      <select
+        name='sortOrder'
+        id='sortOrder'
+        value={orderValue}
+        onChange={(e) => onOrderChange(e.target.value)}
+      >
         <option value={'ascending'}>ascending</option>
         <option value={'descending'}>descending</option>
       </select>
@@ -26,4 +42,8 @@ export function PostSorting({ fields = [] }) {
 //Usiamo PropTypes per assicurarci che il tipo dei prop ricevuti sia giusto
 PostSorting.propTypes = {
   fields: PropTypes.arrayOf(PropTypes.string).isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  orderValue: PropTypes.string.isRequired,
+  onOrderChange: PropTypes.func.isRequired,
 }

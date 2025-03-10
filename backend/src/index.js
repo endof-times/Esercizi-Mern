@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import { app } from './app.js'
 import { initDB } from './db/init.js'
-//funzione lanciata prima delle altre per aprire l'ambiante con variabili
+//funzione lanciata prima delle altre per aprire l'ambiente con variabili
 //servirà per poter utilizzare process.env
 dotenv.config()
 
